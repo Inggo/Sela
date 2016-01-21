@@ -4,6 +4,7 @@ class Sela
 {
     public function __construct()
     {
+        add_filter('xmlrpc_enabled', '__return_false');
         add_action('wp_enqueue_scripts', array($this, 'enqueueStyles'));
         add_action('the_content_more_link', array($this, 'appendExtended'), 10, 2);
     }
