@@ -1,0 +1,34 @@
+/*
+ Theme Name:   Inggo - Sela
+ Theme URI:    https://github.com/Inggo/Sela
+ Description:  Child theme of Sela with some additional features
+ Author:       Inggo Espinosa
+ Author URI:   http://example.com
+ Template:     sela
+ Version:      0.1.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html 
+ Text Domain:  inggo-sela
+*/
+
+.entry-extended {
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity .2s;
+    -o-transition: opacity .2s;
+    transition: opacity .2s;
+}
+
+.more-link {
+    opacity: 1;
+}
+
+.entry-extended.shown {
+    opacity: 1;
+}
+
+.more-link.active {
+    opacity: .3;
+}
+
+
