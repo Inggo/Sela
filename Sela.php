@@ -14,8 +14,6 @@ class Sela
 
     /**
      * Enqueue Theme styles
-     *
-     * @return  void  [description]
      */
     public function enqueueStyles()
     {
