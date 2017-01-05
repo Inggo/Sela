@@ -1,7 +1,7 @@
 (function($){
-  $(document).ready(function(){
+  $(document).ready(function () {
     // Upon clicking more-link...
-    $('.more-link').click(function(e){
+    $('.more-link').click(function (e) {
       // ... override default behavior if .entry-extended div is found...
       if ($(this).closest('.entry-content').find('.entry-extended').length > 0) {
         e.preventDefault();
@@ -13,6 +13,11 @@
         $(this).closest('.entry-content').find('.entry-extended').stop().slideToggle(200).toggleClass('shown');
         return false;
       }
+    });
+
+    // Clicking of .widget-title
+    $('.widget-title').click(function (e) {
+      $(this).next('ul').slideToggle();
     });
   });
 })(jQuery);
