@@ -68,3 +68,14 @@
 .widget-title + ul {
     display: none;
 }
+
+/* Compatibility with Instagram Widget by WPZOOM */
+
+.sidebar-widget-area .widget ul.zoom-instagram-widget__items > li.zoom-instagram-widget__items {
+    padding: 0;
+    border-top: 0;
+}
+
+.zoom-instagram-widget__items img {
+    display: block;
+}
