@@ -3,7 +3,7 @@
  Theme URI:    https://github.com/Inggo/Sela
  Description:  Child theme of Sela with some additional features
  Author:       Inggo Espinosa
- Author URI:   http://example.com
+ Author URI:   http://inggo.xyz
  Template:     sela
  Version:      0.3.0
  License:      GNU General Public License v2 or later
@@ -71,11 +71,11 @@
 
 /* Compatibility with Instagram Widget by WPZOOM */
 
-.sidebar-widget-area .widget ul.zoom-instagram-widget__items > li.zoom-instagram-widget__items {
+.sidebar-widget-area .widget ul.zoom-instagram-widget__items > li.zoom-instagram-widget__item {
     padding: 0;
     border-top: 0;
 }
 
-.zoom-instagram-widget__items img {
+.zoom-instagram-widget__item img {
     display: block;
 }
