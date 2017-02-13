@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.1] - 2017-02-13
+### Fixed
+- Improved compatibility with Jetpack
+
 ## [0.3.0] - 2017-01-24
 ### Added
 - Compatibility with Instagram Widget by WPZOOM
