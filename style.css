@@ -79,3 +79,11 @@
 .zoom-instagram-widget__item img {
     display: block;
 }
+
+/* Compatibility with Jetpack? */
+@media screen and (min-width: 1180px) {
+    .entry-meta span {
+        margin-right: 10px;
+        display: inline-block;
+    }
+}
