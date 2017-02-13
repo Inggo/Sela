@@ -5,7 +5,7 @@
  Author:       Inggo Espinosa
  Author URI:   http://inggo.xyz
  Template:     sela
- Version:      0.3.1
+ Version:      0.3.3
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html 
  Text Domain:  inggo-sela
@@ -21,6 +21,8 @@
 
 .more-link {
     opacity: 1;
+    display: block;
+    margin-bottom: -48px;
 }
 
 .entry-extended.shown {
@@ -29,6 +31,7 @@
 
 .more-link.active {
     opacity: .3;
+    margin-bottom: 0;
 }
 
 .front-widget-area .widget-title,
