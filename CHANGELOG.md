@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.6] - 2017-03-06
+### Added
+- Compatibility with Adsense
+
 ## [0.3.0] - 2017-01-24
 ### Added
 - Compatibility with Instagram Widget by WPZOOM
