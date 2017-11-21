@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.7] - 2017-11-22
+### Added
+- Style overrides for tables
+
 ## [0.3.6] - 2017-03-06
 ### Added
 - Compatibility with Adsense
