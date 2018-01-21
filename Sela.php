@@ -31,7 +31,7 @@ class Sela
             'sela-parent-style',
             get_template_directory_uri() . '/style.css',
             array(),
-            INGGO_SELA_VERSION,
+            INGGO_SELA_VERSION
         );
 
         wp_enqueue_style(
