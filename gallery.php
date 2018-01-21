@@ -1,7 +1,7 @@
 <div id="gallery-<?= $instance ?>" class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
 <?php
 foreach ($attachments as $id => $attachment):
-    $thumb = wp_get_attachment_image_src($id, 'thumbnail');
+    $thumb = wp_get_attachment_image_src($id, 'medium');
     $image = wp_get_attachment_image_src($id, 'large');
     $caption = wp_get_attachment_caption($id);
 ?>
