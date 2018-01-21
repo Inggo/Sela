@@ -1,11 +1,9 @@
-<div id="gallery-<?= $instance ?>" class="gallery" itemscope itemtype="http://schema.org/ImageGallery"><?php
-
-foreach ($attachments as $id => $attachment) {
-
+<div id="gallery-<?= $instance ?>" class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+<?php
+foreach ($attachments as $id => $attachment):
     $thumb = wp_get_attachment_image_src($id, 'thumbnail');
     $image = wp_get_attachment_image_src($id, 'large');
     $caption = wp_get_attachment_caption($id);
-
 ?>
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <a href="<?= $image[0] ?>" itemprop="contentUrl" data-size="<?= $image[1]; ?>x<?= $image[2]; ?>">
@@ -13,5 +11,5 @@ foreach ($attachments as $id => $attachment) {
         </a>
         <figcaption itemprop="caption description"><?= $caption; ?></figcaption>
     </figure>
-<?php
-}
+<?php endforeach ; ?>
+</div>
