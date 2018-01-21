@@ -11,6 +11,7 @@ class Sela
         add_action('wp_enqueue_scripts', array($this, 'enqueueStyles'));
         add_action('the_content_more_link', array($this, 'appendExtended'), 10, 2);
         add_action('the_post', array($this, 'photoswipe'));
+        add_action('init', array($this, 'overrideGallery'));
     }
 
     /**
@@ -102,5 +103,23 @@ class Sela
     public function photoswipeMarkup()
     {
         include_once('photoswipe.php');
+    }
+
+    public function overrideGallery()
+    {
+        emove_shortcode('gallery');
+        add_shortcode('gallery', 'gallery');
+    }
+
+    public function gallery($atts, $content)
+    {
+        extract(shortcode_atts(array(
+                'ids' => '',
+                'orderby' => 'post__in',
+                'columns' => '3',
+                'link' => 'file'
+        ), $atts));
+
+        var_dump($atts);
     }
 }
