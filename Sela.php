@@ -90,7 +90,7 @@ class Sela
 
     public function photoswipe()
     {
-        if (has_shortcode(get_the_contents(), 'gallery') {
+        if (has_shortcode(get_the_contents(), 'gallery')) {
             wp_enqueue_script('photoswipe');
             wp_enqueue_script('photoswipe-ui');
             add_action('wp_footer', array($this, 'photoswipeMarkup'));
@@ -99,6 +99,6 @@ class Sela
 
     public function photoswipeMarkup()
     {
-        
+        include_once('photoswipe.php');
     }
 }
