@@ -111,7 +111,8 @@ class Sela
         add_shortcode('gallery', array($this, 'gallery'));
     }
 
-    public function gallery($attr) {
+    public function gallery($attr)
+    {
         $post = get_post();
 
         static $instance = 0;
