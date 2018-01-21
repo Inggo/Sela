@@ -88,13 +88,15 @@ class Sela
         return str_replace($linkText, 'Read More <span class="dashicons dashicons-arrow-down"></span>', $link);
     }
 
-    public function photoswipe()
+    public function photoswipe($post)
     {
         if (has_shortcode(get_the_contents(), 'gallery')) {
             wp_enqueue_script('photoswipe');
             wp_enqueue_script('photoswipe-ui');
             add_action('wp_footer', array($this, 'photoswipeMarkup'));
         }
+
+        return $post;
     }
 
     public function photoswipeMarkup()
