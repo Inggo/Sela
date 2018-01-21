@@ -22,22 +22,30 @@ class Sela
         wp_register_script(
             'inggo-sela-script',
             get_stylesheet_directory_uri() . '/js/inggo-sela.js',
-            array('jquery')
+            array('jquery'),
+            INGGO_SELA_VERSION,
+            true
         );
         
         wp_enqueue_style(
             'sela-parent-style',
-            get_template_directory_uri() . '/style.css'
+            get_template_directory_uri() . '/style.css',
+            array(),
+            INGGO_SELA_VERSION,
         );
 
         wp_enqueue_style(
             'photoswipe',
-            get_template_directory_uri() . '/vendor/photoswipe/photoswipe.css'
+            get_stylesheet_directory_uri() . '/vendor/photoswipe/photoswipe.css',
+            array(),
+            '4.1.2'
         );
 
         wp_enqueue_style(
             'photoswipe-default-skin',
-            get_template_directory_uri() . '/vendor/photoswipe/default-skin/default-skin.css'
+            get_stylesheet_directory_uri() . '/vendor/photoswipe/default-skin/default-skin.css',
+            array(),
+            '4.1.2'
         );
 
         wp_register_script(
