@@ -120,6 +120,6 @@ class Sela
                 'link' => 'file'
         ), $atts));
 
-        var_dump($atts);
+        include('gallery.php');
     }
 }
