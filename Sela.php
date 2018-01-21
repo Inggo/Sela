@@ -7,16 +7,11 @@ class Sela
      */
     public function __construct()
     {
-        add_action('after_setup_theme', array($this, 'addThemeSupport'));
         add_filter('xmlrpc_enabled', '__return_false');
         add_action('wp_enqueue_scripts', array($this, 'enqueueStyles'));
         add_action('the_content_more_link', array($this, 'appendExtended'), 10, 2);
         add_action('the_post', array($this, 'photoswipe'));
-    }
-
-    public function addThemeSupport()
-    {
-        add_theme_support('html5', array('gallery'));
+        add_action('init', array($this, 'overrideGallery'));
     }
 
     /**
@@ -108,5 +103,95 @@ class Sela
     public function photoswipeMarkup()
     {
         include_once('photoswipe.php');
+    }
+
+    public function overrideGallery()
+    {
+        remove_shortcode('gallery');
+        add_shortcode('gallery', array($this, 'gallery'));
+    }
+
+    public function gallery($attr) {
+        $post = get_post();
+
+        static $instance = 0;
+        $instance++;
+
+        if (!empty($attr['ids'])) {
+            if (empty($attr['orderby'])) {
+                $attr['orderby'] = 'post__in';
+            }
+            $attr['include'] = $attr['ids'];
+        }
+
+        $atts  = shortcode_atts(array(
+            'order'      => 'ASC',
+            'orderby'    => 'menu_order ID',
+            'id'         => $post ? $post->ID : 0,
+            'itemtag'    => $html5 ? 'figure' : 'dl',
+            'icontag'    => $html5 ? 'div' : 'dt',
+            'captiontag' => $html5 ? 'figcaption' : 'dd',
+            'columns'    => 3,
+            'size'       => 'thumbnail',
+            'include'    => '',
+            'exclude'    => '',
+            'link'       => '',
+        ), $attr, 'gallery');
+
+        $id = intval($atts['id']);
+
+        if (!empty($atts['include'])) {
+            $_attachments = get_posts(array(
+                'include'        => $atts['include'],
+                'post_status'    => 'inherit',
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'order'          => $atts['order'],
+                'orderby'        => $atts['orderby'],
+            ));
+
+            $attachments = array();
+            foreach ($_attachments as $key => $val) {
+                $attachments[$val->ID] = $_attachments[$key];
+            }
+        } elseif (!empty($atts['exclude'])) {
+            $attachments = get_children(array(
+                'post_parent'    => $id,
+                'exclude'        => $atts['exclude'],
+                'post_status'    => 'inherit',
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'order'          => $atts['order'],
+                'orderby'        => $atts['orderby'],
+            ));
+        } else {
+            $attachments = get_children(array(
+                'post_parent'    => $id,
+                'post_status'    => 'inherit',
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'order'          => $atts['order'],
+                'orderby'        => $atts['orderby'],
+            ));
+        }
+
+        if (empty($attachments)) {
+            return '';
+        }
+
+        if (is_feed()) {
+            $output = "\n";
+            foreach ($attachments as $att_id => $attachment) {
+                $output .= wp_get_attachment_link($att_id, $atts['size'], true) . "\n";
+            }
+            return $output;
+        }
+
+        ob_start();
+        include("gallery.php");
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
     }
 }
