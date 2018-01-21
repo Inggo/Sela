@@ -7,7 +7,7 @@ class Sela
      */
     public function __construct()
     {
-        add_action('after_setup_theme', 'addThemeSupport');
+        add_action('after_setup_theme', array($this, 'addThemeSupport'));
         add_filter('xmlrpc_enabled', '__return_false');
         add_action('wp_enqueue_scripts', array($this, 'enqueueStyles'));
         add_action('the_content_more_link', array($this, 'appendExtended'), 10, 2);
@@ -16,7 +16,7 @@ class Sela
 
     public function addThemeSupport()
     {
-        add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
+        add_theme_support('html5', array('gallery'));
     }
 
     /**
