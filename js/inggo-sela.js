@@ -1,10 +1,5 @@
 (function($){
   $(document).ready(function () {
-    // Setup #lightbox
-    var img = document.createElement("img");
-    var lightbox = document.getElementById("lightbox");
-    lightbox.appendChild(img);
-
     // Upon clicking more-link...
     $('.more-link').click(function (e) {
       // ... override default behavior if .entry-extended div is found...
@@ -24,25 +19,11 @@
     $('.widget-title').click(function (e) {
       $(this).next('ul').slideToggle();
     });
-
-    // Photoswipe
-    // Bind click event to links/thumbnails.
-    $('.gallery ').each(function () {
-      var images = [];
-      $(this).find('a').each(function(){
-          var img = $(this).find('img');
-      }).on('click', function () {
-        var index = $(this).closest('.gallery-item').index();
-      });
-    });
-    // After user clicked on on thumbnail, find its index.
-    // Create an array of slide objects from DOM elements – loop through all links and retrieve href attribute (large image url), data-size attribute (its size), src of thumbnail, and contents of caption.
   });
 })(jQuery);
 
 // Photoswipe
 var initPhotoSwipeFromDOM = function(gallerySelector) {
-
     // parse slide data (url, title, size ...) from DOM elements 
     // (children of gallerySelector)
     var parseThumbnailElements = function(el) {
