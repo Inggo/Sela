@@ -108,7 +108,7 @@ class Sela
     public function overrideGallery()
     {
         emove_shortcode('gallery');
-        add_shortcode('gallery', 'gallery');
+        add_shortcode('gallery', array($this, 'gallery'));
     }
 
     public function gallery($atts, $content)
