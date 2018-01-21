@@ -99,6 +99,6 @@ class Sela
 
     public function photoswipeMarkup()
     {
-        include_once('photoswipe.php');
+        
     }
 }
