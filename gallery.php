@@ -2,16 +2,13 @@
 <?php
 $i = 0;
 foreach ($attachments as $id => $attachment) {
-    $thumbnail = wp_get_attachment_image($id, 'thumbnail');
-    $image = wp_get_attachment_image($id, 'large');
-    $image_meta = wp_get_attachment_metadata($id);
+    $thumb = wp_get_attachment_image_src($id, 'thumbnail');
+    $image = wp_get_attachment_image_src($id, 'large');
 ?>
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <pre>
-        <?php var_dump($thumbnail); ?>
-        <?php var_dump($image); ?>
-        <?php var_dump($image_meta); ?>
-        </pre>
+        <a href="<?= $image['url'] ?>" itemprop="contentUrl" data-size="<?= $image['width']; ?>x<?= $image['height']; ?>">
+            <img src="<?= $thumb['url'] ?>" itemprop="thumbnail" alt="">
+        </a>
     </figure>
 <?php
 }
