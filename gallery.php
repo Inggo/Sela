@@ -4,6 +4,9 @@ $i = 0;
 foreach ($attachments as $id => $attachment) {
     $thumb = wp_get_attachment_image_src($id, 'thumbnail');
     $image = wp_get_attachment_image_src($id, 'large');
+
+    var_dump($thumb);
+    var_dump($image);
 ?>
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <a href="<?= $image['url'] ?>" itemprop="contentUrl" data-size="<?= $image['width']; ?>x<?= $image['height']; ?>">
