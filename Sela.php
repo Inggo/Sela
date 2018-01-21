@@ -16,7 +16,7 @@ class Sela
 
     public function addThemeSupport()
     {
-        add_theme_support('html5');
+        add_theme_support('html5', array('gallery'));
     }
 
     /**
