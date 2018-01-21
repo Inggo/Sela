@@ -36,15 +36,15 @@ class Sela
 
         wp_enqueue_style(
             'photoswipe-default-skin',
-            get_template_directory_uri() . '/vendor/photoswipe/default-skin/default-skin.css',
-            array(),
-            '4.1.2',
-            true
+            get_template_directory_uri() . '/vendor/photoswipe/default-skin/default-skin.css'
         );
 
         wp_register_script(
             'photoswipe',
-            get_stylesheet_directory_uri() . '/vendor/photoswipe/photoswipe.min.js'
+            get_stylesheet_directory_uri() . '/vendor/photoswipe/photoswipe.min.js',
+            array(),
+            '4.1.2',
+            true
         );
 
         wp_register_script(
@@ -90,7 +90,7 @@ class Sela
 
     public function photoswipe($post)
     {
-        if (has_shortcode(get_the_contents(), 'gallery')) {
+        if (has_shortcode($post->post_content, 'gallery')) {
             wp_enqueue_script('photoswipe');
             wp_enqueue_script('photoswipe-ui');
             add_action('wp_footer', array($this, 'photoswipeMarkup'));
