@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.0] - 2018-01-21
+### Added
+- Override gallery script
+
 ## [0.3.8] - 2017-11-22
 ### Added
 - Style overrides for tables

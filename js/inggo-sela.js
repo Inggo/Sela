@@ -1,5 +1,10 @@
 (function($){
   $(document).ready(function () {
+    // Setup #lightbox
+    var img = document.createElement("img");
+    var lightbox = document.getElementById("lightbox");
+    lightbox.appendChild(img);
+
     // Upon clicking more-link...
     $('.more-link').click(function (e) {
       // ... override default behavior if .entry-extended div is found...

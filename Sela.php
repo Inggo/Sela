@@ -10,6 +10,7 @@ class Sela
         add_filter('xmlrpc_enabled', '__return_false');
         add_action('wp_enqueue_scripts', array($this, 'enqueueStyles'));
         add_action('the_content_more_link', array($this, 'appendExtended'), 10, 2);
+        add_action('loop_end', array($this, 'photoswipe'));
     }
 
     /**
@@ -27,7 +28,33 @@ class Sela
             'sela-parent-style',
             get_template_directory_uri() . '/style.css'
         );
-        
+
+        wp_enqueue_style(
+            'photoswipe',
+            get_template_directory_uri() . '/vendor/photoswipe/photoswipe.css'
+        );
+
+        wp_enqueue_style(
+            'photoswipe-default-skin',
+            get_template_directory_uri() . '/vendor/photoswipe/default-skin/default-skin.css',
+            array(),
+            '4.1.2',
+            true
+        );
+
+        wp_register_script(
+            'photoswipe',
+            get_stylesheet_directory_uri() . '/vendor/photoswipe/photoswipe.min.js'
+        );
+
+        wp_register_script(
+            'photoswipe-ui',
+            get_stylesheet_directory_uri() . '/vendor/photoswipe/photoswipe-ui-default.min.js',
+            array(),
+            '4.1.2',
+            true
+        );
+
         wp_enqueue_script('inggo-sela-script');
     }
     
@@ -59,5 +86,19 @@ class Sela
     public function replaceLinkText($link, $linkText)
     {
         return str_replace($linkText, 'Read More <span class="dashicons dashicons-arrow-down"></span>', $link);
+    }
+
+    public function photoswipe()
+    {
+        if (has_shortcode(get_the_contents(), 'gallery') {
+            wp_enqueue_script('photoswipe');
+            wp_enqueue_script('photoswipe-ui');
+            add_action('wp_footer', array($this, 'photoswipeMarkup'));
+        }
+    }
+
+    public function photoswipeMarkup()
+    {
+        include_once('photoswipe.php');
     }
 }
