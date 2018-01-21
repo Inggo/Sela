@@ -1,6 +1,6 @@
 <?php
 
-define('INGGO_SELA_VERSION', '0.4.0');
+define('INGGO_SELA_VERSION', '0.4.1');
 
 require_once("Sela.php");
 require_once("Customizer.php");

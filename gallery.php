@@ -2,7 +2,7 @@
 <?php
 foreach ($attachments as $id => $attachment):
     $thumb = wp_get_attachment_image_src($id, 'medium');
-    $image = wp_get_attachment_image_src($id, 'large');
+    $image = wp_get_attachment_image_src($id, 'full');
     $caption = wp_get_attachment_caption($id);
 ?>
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">

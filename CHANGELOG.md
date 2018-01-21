@@ -1,8 +1,8 @@
 # Change Log
 
-## [0.4.0] - 2018-01-21
+## [0.4.1] - 2018-01-21
 ### Added
-- Override gallery script
+- Add PhotoSwipe for galleries
 
 ## [0.3.8] - 2017-11-22
 ### Added

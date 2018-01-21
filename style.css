@@ -108,3 +108,15 @@ ins.adsbygoogle {
     margin: 0;
     vertical-align: middle;
 }
+
+/* Gallery styling */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.gallery figure {
+    max-width: 150px;
+    margin: 2px;
+}
