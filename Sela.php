@@ -35,6 +35,13 @@ class Sela
         );
 
         wp_enqueue_style(
+            'fontello',
+            get_stylesheet_directory_uri() . '/vendor/fontello/css/fontello.css',
+            array(),
+            INGGO_SELA_VERSION
+        );
+
+        wp_enqueue_style(
             'photoswipe',
             get_stylesheet_directory_uri() . '/vendor/photoswipe/photoswipe.css',
             array(),

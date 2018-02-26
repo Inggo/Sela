@@ -21,7 +21,57 @@ class Customizer
     public function register($customizer)
     {
         $this->customizer = $customizer;
+        $this->registerSocial();
         $this->registerAdvanced();
+    }
+
+    public function registerSocial()
+    {
+        $this->customizer->add_section('social', array(
+            'title' => 'Social Links',
+            'description' => 'Social media links and settings.'
+        ));
+
+        $this->customizer->add_setting('social_instagram');
+
+        $this->customizer->add_setting('social_facebook');
+
+        $this->customizer->add_setting('social_shop');
+        
+        $this->customizer->add_setting('social_mail');
+
+        $this->addTextControl(
+            'social_instagram',
+            'social',
+            'Instagram',
+            'Link to Instagram, e.g.: ' .
+                '<code>https://www.instagram.com/username/</code>'
+        );
+
+        $this->addTextControl(
+            'social_facebook',
+            'social',
+            'Facebook',
+            'Link to Facebook, e.g.: ' .
+                '<code>https://www.facebook.com/username/</code>'
+        );
+
+        $this->addTextControl(
+            'social_shop',
+            'social',
+            'Shop',
+            'Link to Shop, e.g.: ' .
+                '<code>https://society6.com/shop</code>'
+        );
+
+        $this->addControl(
+            'email',
+            'social_mail',
+            'social',
+            'Email',
+            'Email for mailto:, e.g.: ' .
+                '<code>sample@email.com</code>'
+        );
     }
 
     /**
@@ -43,7 +93,7 @@ class Customizer
             'advanced',
             'Custom Header Code',
             'Place custom code that needs to appear in the ' .
-            '<code>&lt;head&gt;</code> section of all pages here.'
+                '<code>&lt;head&gt;</code> section of all pages here.'
         );
 
         $this->addTextareaControl(
@@ -53,6 +103,25 @@ class Customizer
             'Place custom code that needs to appear in the bottom of ' .
             'all pages here.'
         );
+    }
+
+    private function addControl($type, $setting, $section, $label, $description)
+    {
+        $this->customizer->add_control(new CustomizeControl(
+            $this->customizer,
+            $setting,
+            array(
+                'label' => $label,
+                'description' => $description,
+                'section' => $section,
+                'type' => $type,
+            )
+        ));
+    }
+
+    private function addTextControl($setting, $section, $label, $description)
+    {
+        $this->addControl('text', $setting, $section, $label, $description);
     }
 
     /**
@@ -65,16 +134,17 @@ class Customizer
      */
     private function addTextareaControl($setting, $section, $label, $description)
     {
-        $this->customizer->add_control(new CustomizeControl(
-            $this->customizer,
-            $setting,
-            array(
-                'label' => $label,
-                'description' => $description,
-                'section' => $section,
-                'type' => 'textarea',
-            )
-        ));
+        $this->addControl('textarea', $setting, $section, $label, $description);
+    }
+
+    public function hasSocial($value)
+    {
+        return !empty(get_theme_mod('social_' . $value));
+    }
+
+    public function getSocial($value)
+    {
+        return get_theme_mod('social_' . $value);
     }
 
     /**

@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.5.0] - 2018-02-26
+### Added
+- Social links customizer and widget
+- Basic Fontello icons for social media
+
 ## [0.4.1] - 2018-01-21
 ### Added
 - Add PhotoSwipe for galleries
